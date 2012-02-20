@@ -71,17 +71,18 @@ $.fn.verticalText = function(textOrUserOptions) {
         height = container.height();
     var canvas = document.createElement('canvas');
     container.append(canvas);
+    canvas.width = width;
+    canvas.height = height;
+    $(canvas).css({
+      display: 'block',
+      width: width,
+      height: height
+    });
     // IE support; if the canvas element is dynamically created, the getContext
     // method won't be available until it is explicitly intialised:
     if (typeof G_vmlCanvasManager != 'undefined' && G_vmlCanvasManager && G_vmlCanvasManager.initElement) {
       canvas = G_vmlCanvasManager.initElement(canvas);
     }
-    canvas.width = width;
-    canvas.height = height;
-    $(canvas).css({
-      width: width,
-      height: height
-    });
     var context = canvas.getContext('2d');
 
     var font = defaults.font;
